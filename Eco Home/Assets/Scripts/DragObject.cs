@@ -11,13 +11,14 @@ public class DragObject : MonoBehaviour
 
     private Vector3 mOffset;
 
-    private float mZCoord;
+    private float mZCoord; 
 
 
     void OnMouseDown()
 
     {
 
+        DestinationObject.SetItem(gameObject);
         print(Camera.allCameras);
 
         mZCoord = Camera.main.WorldToScreenPoint(
@@ -29,6 +30,10 @@ public class DragObject : MonoBehaviour
 
         mOffset = gameObject.transform.position - GetMouseAsWorldPoint();
 
+    }
+
+    void OnMouseUp() {
+        DestinationObject.DestroyItem();
     }
 
 
