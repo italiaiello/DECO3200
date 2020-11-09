@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - DropZone
+  - Detergent
+  - Clothes
   layers:
   - Default
   - TransparentFX
