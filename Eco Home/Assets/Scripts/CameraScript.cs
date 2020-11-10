@@ -15,12 +15,12 @@ public class CameraScript : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.Space)) {
+        // if (Input.GetKey(KeyCode.Space)) {
             yaw += speedH * Input.GetAxis("Mouse X");
             pitch -= speedV * Input.GetAxis("Mouse Y");
 
             transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
-        }
+        // }
 
     }
 }

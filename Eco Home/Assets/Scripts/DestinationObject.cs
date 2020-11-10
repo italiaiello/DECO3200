@@ -6,6 +6,7 @@ public class DestinationObject : MonoBehaviour
 {   
     private static GameObject draggedItem;
     private static bool isAdding = false;
+    public GameObject currentObject;
     public Renderer rend;
 
     
@@ -17,9 +18,9 @@ public class DestinationObject : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-         if (this.gameObject.name == "WashingMachine" && other.tag == "Detergent") {
+         if (currentObject.name == "WashingMachine" && other.tag == "Detergent") {
             SetObjectColor(Color.red, true);
-        } else if (this.gameObject.name == "Dryer" && other.tag == "Clothes") {
+        } else if (currentObject.name == "Dryer" && other.tag == "Clothes") {
             SetObjectColor(Color.red, true);
         }
        
@@ -34,11 +35,11 @@ public class DestinationObject : MonoBehaviour
         isAdding = isGoingToAdd;
     }
 
-    public bool GetIsAdding() {
+    public static bool GetIsAdding() {
         return isAdding;
     }
 
-    public void SetItem(GameObject currentObject) {
+    public static void SetItem(GameObject currentObject) {
         draggedItem = currentObject;
     }
     

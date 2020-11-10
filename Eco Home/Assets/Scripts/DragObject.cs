@@ -17,9 +17,7 @@ public class DragObject : MonoBehaviour
     void OnMouseDown()
 
     {
-        DestinationObject destination = new DestinationObject();
-        destination.SetItem(this.gameObject);
-        print(Camera.allCameras);
+        DestinationObject.SetItem(this.gameObject);
 
         mZCoord = Camera.main.WorldToScreenPoint(
 
@@ -33,10 +31,11 @@ public class DragObject : MonoBehaviour
     }
 
     void OnMouseUp() {
-        DestinationObject destination = new DestinationObject();
-        if (destination.GetIsAdding() == true) {
+        if (DestinationObject.GetIsAdding() == true) {
             Destroy(this.gameObject);
         }
+
+        Tasks.SetIsAnimationFinished(false);
     }
 
 
