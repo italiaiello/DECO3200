@@ -3,37 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestinationObject : MonoBehaviour
-{
-    private static GameObject item;
+{   
+    private static GameObject draggedItem;
     private static bool isAdding = false;
     public Renderer rend;
 
-    void OnTriggerEnter(Collider other) {
-
-        if ((this.gameObject.name == "WashingMachine" && other.tag == "Detergent") || (this.gameObject.name == "Dryer" && other.tag == "Clothes")) {
-            rend.material.color = Color.red;
-            isAdding = true;
+    
+    void Update() {
+        if (!draggedItem) {
+            rend.material.color = Color.grey;
+            isAdding = false;
         }
+    }
+
+    void OnTriggerEnter(Collider other) {
+         if (this.gameObject.name == "WashingMachine" && other.tag == "Detergent") {
+            SetObjectColor(Color.red, true);
+        } else if (this.gameObject.name == "Dryer" && other.tag == "Clothes") {
+            SetObjectColor(Color.red, true);
+        }
+       
     }
     
-
     void OnTriggerExit(Collider other) {
-        rend.material.color = Color.grey;
-        isAdding = false;
+        SetObjectColor(Color.grey, false);
     }
 
-    public static void DestroyItem() {
-        if (DestinationObject.isAdding == true) {
-            Debug.Log("You added some " + item.name);
-            // rend.material.color = Color.grey;
-            // DestinationObject.isAdding = false;
-            Destroy(item);
-        }
+    void SetObjectColor(Color color, bool isGoingToAdd) {
+        rend.material.color = color;
+        isAdding = isGoingToAdd;
     }
 
-    public static void SetItem(GameObject currentObject) {
-        item = currentObject;
+    public bool GetIsAdding() {
+        return isAdding;
     }
 
+    public void SetItem(GameObject currentObject) {
+        draggedItem = currentObject;
+    }
     
 }
