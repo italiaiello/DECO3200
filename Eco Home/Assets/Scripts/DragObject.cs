@@ -32,6 +32,7 @@ public class DragObject : MonoBehaviour
 
     void OnMouseUp() {
         if (DestinationObject.GetIsAdding() == true) {
+            Decisions.AddChoice(this.gameObject.name);
             Destroy(this.gameObject);
         }
 
