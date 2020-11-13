@@ -32,12 +32,25 @@ public class DragObject : MonoBehaviour
 
     void OnMouseUp() {
         if (DestinationObject.GetIsAdding() == true) {
-            Decisions.AddChoice(DestinationObject.GetDraggedItem().name);
+            if (this.gameObject.name == "WetClothes") {
+                HandleWetClothes();
+            } else {
+                Decisions.AddChoice(DestinationObject.GetDraggedItem().name);
+            }
             Tasks.ShowNextTask();
             this.gameObject.SetActive(false);
         }
 
         Tasks.SetIsAnimationFinished(false);
+    }
+
+    void HandleWetClothes() {
+        string destination = DestinationObject.GetWetClothesDestination();
+        if (destination == "Dryer") {
+            Decisions.AddChoice("Dryer");
+        } else if (destination == "Clothesline") {
+            Decisions.AddChoice("Clothesline");
+        }
     }
 
 

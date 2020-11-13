@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Tasks : MonoBehaviour
 {
     public GameObject clothes, detergents, firstDetergent, secondDetergent, thirdDetergent, wetClothes, popUpPanel;
-    public Canvas hotColdWash, longShortWash;
-    public Text popUpText;
+    public Canvas hotColdWash, longShortWash, feedback;
+    public Text popUpText, feedbackText;
     public Image detergentTask, washTask, dryTask;
 
     public Animator fadeInAnim;
@@ -24,20 +24,23 @@ public class Tasks : MonoBehaviour
             }
         }
 
-        if (taskNumber > 0 && taskNumber < 5) {
+        if (taskNumber > 0 && taskNumber < 6) {
 
             switch(taskNumber) {
                 case 1:
-                    ShowHideTasks(true, false, false, false);
+                    ShowHideTasks(true, false, false, false, false);
                     break;
                 case 2:
-                    ShowHideTasks(false, true, false, false);
+                    ShowHideTasks(false, true, false, false, false);
                     break;
                 case 3:
-                    ShowHideTasks(false, false, true, false);
+                    ShowHideTasks(false, false, true, false, false);
                     break;
                 case 4:
-                    ShowHideTasks(false, false, false, true);
+                    ShowHideTasks(false, false, false, true, false);
+                    break;
+                case 5:
+                    ShowHideTasks(false, false, false, false, true);
                     break;
                 default:
                     Debug.Log("Finished Game");
@@ -60,13 +63,20 @@ public class Tasks : MonoBehaviour
 
     public static void ShowNextTask() {
         taskNumber += 1;
-        
     }
 
-    void ShowHideTasks(bool showAddDetergent, bool showHotColdWash, bool showWashLength, bool showWetClothes) {
+    void ShowHideTasks(bool showAddDetergent, bool showHotColdWash, bool showWashLength, bool showWetClothes, bool showFeedback) {
+        // Canvas elements don't have a SetActive method, but they have an 'enabled' property
         detergents.SetActive(showAddDetergent);
         hotColdWash.enabled = showHotColdWash;
         longShortWash.enabled = showWashLength;
         wetClothes.SetActive(showWetClothes);
+
+        // 
+        if (showFeedback) {
+            feedbackText.text = Decisions.GetFeedback();
+        }
+
+        feedback.enabled = showFeedback;
     }
 }

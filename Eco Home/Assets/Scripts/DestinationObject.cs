@@ -6,6 +6,7 @@ public class DestinationObject : MonoBehaviour
 {   
     private static GameObject draggedItem;
     private static bool isAdding = false;
+    private static string wetClothesDestination;
     public GameObject currentObject;
     public Renderer rend;
 
@@ -22,6 +23,7 @@ public class DestinationObject : MonoBehaviour
             SetObjectColor(Color.red, true);
         } else if ((currentObject.name == "Dryer" || currentObject.name == "Clothesline") && other.tag == "Clothes") {
             SetObjectColor(Color.red, true);
+            SetWetClothesDestination(currentObject.name);
         }
        
     }
@@ -35,6 +37,10 @@ public class DestinationObject : MonoBehaviour
         isAdding = isGoingToAdd;
     }
 
+    void SetWetClothesDestination(string name) {
+        wetClothesDestination = name;
+    }
+
     public static bool GetIsAdding() {
         return isAdding;
     }
@@ -43,8 +49,17 @@ public class DestinationObject : MonoBehaviour
         return draggedItem;
     }
 
-    public static void SetItem(GameObject currentObject) {
-        draggedItem = currentObject;
+    public static GameObject GetCurrentObject() {
+        DestinationObject destination = new DestinationObject();
+        return destination.currentObject;
+    }
+
+    public static string GetWetClothesDestination() {
+        return wetClothesDestination;
+    }
+
+    public static void SetItem(GameObject currObject) {
+        draggedItem = currObject;
     }
     
 }

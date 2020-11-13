@@ -60,9 +60,13 @@ public class Decisions : MonoBehaviour
 
     public static void AddChoice (string choice) {
         userChoices.Add(choice);
+    }
 
-        for (int i = 0; i < userChoices.Count; i++) {
-            Debug.Log(userChoices[i]);
-        }
+    public static string GetFeedback() {
+        string[] userChoicesArray = userChoices.ToArray();
+        string userChoicesString = string.Join(", ", userChoicesArray);
+        int userFeedbackKey = feedback[userChoicesString];
+        // var feedbackValue = feedback[userChoicesString];
+        return currUserFeedback.userFeedback[userFeedbackKey];
     }
 }
