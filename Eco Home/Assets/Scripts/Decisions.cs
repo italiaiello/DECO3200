@@ -54,14 +54,15 @@ public class Decisions : MonoBehaviour
 
     
     void Start() {
-        Debug.Log("Hello\nthere");
         
         currUserFeedback = ScriptableObject.CreateInstance<Feedback>();
-        Debug.Log(currUserFeedback.userFeedback[1]);
     }
 
     public static void AddChoice (string choice) {
         userChoices.Add(choice);
-        Debug.Log(userChoices.Count);
+
+        for (int i = 0; i < userChoices.Count; i++) {
+            Debug.Log(userChoices[i]);
+        }
     }
 }

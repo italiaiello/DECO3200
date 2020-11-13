@@ -11,7 +11,7 @@ public class DestinationObject : MonoBehaviour
 
     
     void Update() {
-        if (!draggedItem) {
+        if (draggedItem && !draggedItem.activeSelf) {
             rend.material.color = Color.grey;
             isAdding = false;
         }
@@ -20,7 +20,7 @@ public class DestinationObject : MonoBehaviour
     void OnTriggerEnter(Collider other) {
          if (currentObject.name == "WashingMachine" && other.tag == "Detergent") {
             SetObjectColor(Color.red, true);
-        } else if (currentObject.name == "Dryer" && other.tag == "Clothes") {
+        } else if ((currentObject.name == "Dryer" || currentObject.name == "Clothesline") && other.tag == "Clothes") {
             SetObjectColor(Color.red, true);
         }
        
@@ -37,6 +37,10 @@ public class DestinationObject : MonoBehaviour
 
     public static bool GetIsAdding() {
         return isAdding;
+    }
+
+    public static GameObject GetDraggedItem() {
+        return draggedItem;
     }
 
     public static void SetItem(GameObject currentObject) {
