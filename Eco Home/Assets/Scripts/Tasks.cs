@@ -33,25 +33,25 @@ public class Tasks : MonoBehaviour
                     ShowHideTasks(false, true, false, false, false);
                     detergentTask.GetComponent<Image>().color = Color.green;
                     popUpPanel.SetActive(true);
-                    HandlePanel("Clothes were added");
+                    HandlePanel("Detergent was added");
                     break;
                 case 4:
                     ShowHideTasks(false, false, true, false, false);
                     washTask.GetComponent<Image>().color = Color.green;
                     popUpPanel.SetActive(true);
-                    HandlePanel("Clothes were added");
+                    HandlePanel("Wash was chosen");
                     break;
                 case 5:
                     ShowHideTasks(false, false, false, true, false);
                     pickCycleTask.GetComponent<Image>().color = Color.green;
                     popUpPanel.SetActive(true);
-                    HandlePanel("Clothes were added");
+                    HandlePanel("Cycle chosen");
                     break;
                 case 6:
                     ShowHideTasks(false, false, false, false, true);
                     dryTask.GetComponent<Image>().color = Color.green;
                     popUpPanel.SetActive(true);
-                    HandlePanel("Clothes were added");
+                    HandlePanel("Clothes have been dried");
                     break;
                 default:
                     Debug.Log("Finished Game");
