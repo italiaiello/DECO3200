@@ -65,6 +65,7 @@ public class Decisions : MonoBehaviour
     public static string GetFeedback() {
         string[] userChoicesArray = userChoices.ToArray();
         string userChoicesString = string.Join(", ", userChoicesArray);
+        Debug.Log(userChoicesString);
         int userFeedbackKey = feedback[userChoicesString];
         // var feedbackValue = feedback[userChoicesString];
         return currUserFeedback.userFeedback[userFeedbackKey];

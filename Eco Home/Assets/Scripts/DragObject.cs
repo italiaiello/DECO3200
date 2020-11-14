@@ -34,11 +34,15 @@ public class DragObject : MonoBehaviour
         if (DestinationObject.GetIsAdding() == true) {
             if (this.gameObject.name == "WetClothes") {
                 HandleWetClothes();
+            } else if (this.gameObject.name == "Clothes") {
+                this.gameObject.SetActive(false);
+                Tasks.ShowNextTask();
+                return;
             } else {
                 Decisions.AddChoice(DestinationObject.GetDraggedItem().name);
             }
-            Tasks.ShowNextTask();
             this.gameObject.SetActive(false);
+            Tasks.ShowNextTask();
         }
 
         Tasks.SetIsAnimationFinished(false);

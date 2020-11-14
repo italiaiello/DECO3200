@@ -1186,7 +1186,7 @@ GameObject:
   - component: {fileID: 396761418}
   - component: {fileID: 396761417}
   m_Layer: 5
-  m_Name: WashCycle
+  m_Name: PickCycle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1500,8 +1500,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.115602, z: 2.2287679}
+  m_Center: {x: 0, y: 0.05780014, z: -0.61438304}
 --- !u!23 &544066987
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1700,7 +1700,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580844234}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -888.92, y: -245.23, z: -480.72}
+  m_LocalPosition: {x: -886.13, y: -245.23, z: -480.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1871474243}
@@ -1901,7 +1901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.11, y: 7.12}
+  m_AnchoredPosition: {x: -4.11, y: 8.93}
   m_SizeDelta: {x: 33.172905, y: 9.5718155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &817523102
@@ -2259,7 +2259,7 @@ GameObject:
   - component: {fileID: 967343293}
   - component: {fileID: 967343292}
   m_Layer: 5
-  m_Name: Clothes
+  m_Name: AddClothes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3374,8 +3374,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.2091684, y: 3.6088204, z: 1.429854}
+  m_Center: {x: 0.104583815, y: 0.22152962, z: -0.214927}
 --- !u!23 &1537057366
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4094,7 +4094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.1100016, y: 7.12}
+  m_AnchoredPosition: {x: -4.1100016, y: 8.93}
   m_SizeDelta: {x: 33.172905, y: 9.5718155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1860603977
@@ -4236,8 +4236,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.1184994, z: 1.9569898}
+  m_Center: {x: 0, y: 0.05924945, z: -0.47849497}
 --- !u!23 &1876722394
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4498,8 +4498,10 @@ MonoBehaviour:
   feedback: {fileID: 1426501022}
   popUpText: {fileID: 917181763}
   feedbackText: {fileID: 676791938}
+  addClothesTask: {fileID: 967343292}
   detergentTask: {fileID: 1231621577}
   washTask: {fileID: 1574540571}
+  pickCycleTask: {fileID: 396761417}
   dryTask: {fileID: 2123234723}
   fadeInAnim: {fileID: 266470499}
 --- !u!1 &2142918816

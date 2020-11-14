@@ -8,7 +8,7 @@ public class Tasks : MonoBehaviour
     public GameObject clothes, detergents, firstDetergent, secondDetergent, thirdDetergent, wetClothes, popUpPanel;
     public Canvas hotColdWash, longShortWash, feedback;
     public Text popUpText, feedbackText;
-    public Image detergentTask, washTask, dryTask;
+    public Image addClothesTask, detergentTask, washTask, pickCycleTask, dryTask;
 
     public Animator fadeInAnim;
     public static bool isAnimationFinished = false;
@@ -16,31 +16,42 @@ public class Tasks : MonoBehaviour
     private static int taskNumber = 1;
 
     void Update() {
-        if (!isAnimationFinished) {
-            if (!firstDetergent.activeSelf || !secondDetergent.activeSelf || !thirdDetergent.activeSelf) {
-                detergentTask.GetComponent<Image>().color = Color.green;
-                popUpPanel.SetActive(true);
-                HandlePanel("You added detergent");
-            }
-        }
 
-        if (taskNumber > 0 && taskNumber < 6) {
+        if (taskNumber > 0 && taskNumber < 7) {
 
             switch(taskNumber) {
                 case 1:
-                    ShowHideTasks(true, false, false, false, false);
+                    ShowHideTasks(false, false, false, false, false);
                     break;
                 case 2:
-                    ShowHideTasks(false, true, false, false, false);
+                    ShowHideTasks(true, false, false, false, false);
+                    addClothesTask.GetComponent<Image>().color = Color.green;
+                    popUpPanel.SetActive(true);
+                    HandlePanel("Clothes were added");
                     break;
                 case 3:
-                    ShowHideTasks(false, false, true, false, false);
+                    ShowHideTasks(false, true, false, false, false);
+                    detergentTask.GetComponent<Image>().color = Color.green;
+                    popUpPanel.SetActive(true);
+                    HandlePanel("Clothes were added");
                     break;
                 case 4:
-                    ShowHideTasks(false, false, false, true, false);
+                    ShowHideTasks(false, false, true, false, false);
+                    washTask.GetComponent<Image>().color = Color.green;
+                    popUpPanel.SetActive(true);
+                    HandlePanel("Clothes were added");
                     break;
                 case 5:
+                    ShowHideTasks(false, false, false, true, false);
+                    pickCycleTask.GetComponent<Image>().color = Color.green;
+                    popUpPanel.SetActive(true);
+                    HandlePanel("Clothes were added");
+                    break;
+                case 6:
                     ShowHideTasks(false, false, false, false, true);
+                    dryTask.GetComponent<Image>().color = Color.green;
+                    popUpPanel.SetActive(true);
+                    HandlePanel("Clothes were added");
                     break;
                 default:
                     Debug.Log("Finished Game");
@@ -72,7 +83,6 @@ public class Tasks : MonoBehaviour
         longShortWash.enabled = showWashLength;
         wetClothes.SetActive(showWetClothes);
 
-        // 
         if (showFeedback) {
             feedbackText.text = Decisions.GetFeedback();
         }
