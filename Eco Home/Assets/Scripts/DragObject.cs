@@ -11,8 +11,8 @@ public class DragObject : MonoBehaviour
 
     private Vector3 mOffset;
 
-    private float mZCoord; 
-
+    private float mZCoord;
+    
 
     void OnMouseDown()
 
@@ -46,6 +46,8 @@ public class DragObject : MonoBehaviour
         }
 
         Tasks.SetIsAnimationFinished(false);
+
+
     }
 
     void HandleWetClothes() {

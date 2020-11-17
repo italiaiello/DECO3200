@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class Tasks : MonoBehaviour
 {
-    public GameObject clothes, detergents, firstDetergent, secondDetergent, thirdDetergent, wetClothes, popUpPanel;
+    public Renderer clothes, firstDetergent, secondDetergent, thirdDetergent;
+    public GameObject wetClothes, popUpPanel;
     public Canvas hotColdWash, longShortWash, feedback;
     public Text popUpText, feedbackText;
     public Image addClothesTask, detergentTask, washTask, pickCycleTask, dryTask;
+    public Material denim, badDetergent, avgDetergent, goodDetergent, defaultDetergent;
 
     public Animator fadeInAnim;
     public static bool isAnimationFinished = false;
@@ -78,15 +80,29 @@ public class Tasks : MonoBehaviour
 
     void ShowHideTasks(bool showAddDetergent, bool showHotColdWash, bool showWashLength, bool showWetClothes, bool showFeedback) {
         // Canvas elements don't have a SetActive method, but they have an 'enabled' property
-        detergents.SetActive(showAddDetergent);
+
+        if (showAddDetergent) {
+            firstDetergent.GetComponent<MeshRenderer>().material = badDetergent;
+            secondDetergent.GetComponent<MeshRenderer>().material = avgDetergent;
+            thirdDetergent.GetComponent<MeshRenderer>().material = goodDetergent;
+        } else {
+            firstDetergent.GetComponent<MeshRenderer>().material = defaultDetergent;
+            secondDetergent.GetComponent<MeshRenderer>().material = defaultDetergent;
+            thirdDetergent.GetComponent<MeshRenderer>().material = defaultDetergent;
+        }
+
+        wetClothes.SetActive(showWetClothes);
         hotColdWash.enabled = showHotColdWash;
         longShortWash.enabled = showWashLength;
-        wetClothes.SetActive(showWetClothes);
 
         if (showFeedback) {
             feedbackText.text = Decisions.GetFeedback();
         }
 
         feedback.enabled = showFeedback;
+    }
+
+    public static int GetTaskNumber() {
+        return taskNumber;
     }
 }
